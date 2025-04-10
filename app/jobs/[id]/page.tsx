@@ -9,8 +9,8 @@ export async function generateStaticParams() {
   }));
 }
 
-// Use Next.js's built-in types
-export default function Page({
+// Make the page component async again
+export default async function Page({
   params,
 }: {
   params: { id: string };
