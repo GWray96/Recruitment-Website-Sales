@@ -4,7 +4,7 @@
   "description": "A recruitment website for sales positions",
   "scripts": {
     "dev": "next dev",
-    "build": "npm clean-install && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
