@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import JobCard from '@/components/ui/JobCard';
-import { jobsData } from '@/mock/jobs';
+import JobCard from '../../components/ui/JobCard';
+import { jobsData } from '../../mock/jobs';
 import { BsSearch, BsGeoAlt, BsBriefcase, BsCurrencyDollar } from 'react-icons/bs';
 
 export default function JobsPage() {

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BsGeoAlt, BsBriefcase, BsCurrencyDollar, BsClock, BsBuilding, BsCheck2 } from 'react-icons/bs';
-import { jobsData } from '@/mock/jobs';
+import { jobsData } from '../../../mock/jobs';
 
 export default function JobDetailPage({ params }: { params: { id: string } }) {
   const [isApplying, setIsApplying] = useState(false);
