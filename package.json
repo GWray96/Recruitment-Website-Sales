@@ -33,5 +33,11 @@
   "bugs": {
     "url": "https://github.com/GWray96/Recruitment-Website-Sales/issues"
   },
-  "homepage": "https://github.com/GWray96/Recruitment-Website-Sales#readme"
+  "homepage": "https://github.com/GWray96/Recruitment-Website-Sales#readme",
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.2",
+    "typescript": "^5.8.3"
+  }
 }
