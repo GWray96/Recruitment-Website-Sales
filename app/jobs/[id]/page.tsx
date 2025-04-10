@@ -26,13 +26,14 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   };
 }
 
-// Make the page component async again
+// Page component with Promise-based params
 export default async function Page({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const job = jobs.find((job) => job.id === params.id);
+  const resolvedParams = await params;
+  const job = jobs.find((job) => job.id === resolvedParams.id);
 
   if (!job) {
     notFound();
