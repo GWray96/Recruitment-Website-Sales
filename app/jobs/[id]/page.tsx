@@ -8,8 +8,9 @@ type PageProps = {
   searchParams?: { [key: string]: string | string[] | undefined };
 };
 
-// Use the correct Next.js page props type
-export default function Page({ params }: PageProps) {
+// Make the page component async
+export default async function Page({ params }: PageProps) {
+  // In a real app, this would be an async operation
   const job = jobs.find((job) => job.id === params.id);
 
   if (!job) {
