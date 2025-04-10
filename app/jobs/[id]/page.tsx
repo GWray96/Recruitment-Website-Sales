@@ -1,14 +1,15 @@
-'use client';
-
-import { useState } from 'react';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { BsGeoAlt, BsBriefcase, BsCurrencyDollar, BsClock, BsBuilding, BsCheck2 } from 'react-icons/bs';
+import { Suspense } from 'react';
+import { BsGeoAlt, BsBriefcase, BsCurrencyDollar, BsClock, BsCheck2 } from 'react-icons/bs';
 import { jobsData } from '../../../mock/jobs';
+import JobActions from './JobActions';
 
-export default function JobDetailPage({ params }: { params: { id: string } }) {
-  const [isApplying, setIsApplying] = useState(false);
+type PageProps = {
+  params: { id: string };
+};
+
+export default function JobDetailPage({ params }: PageProps) {
   const job = jobsData.find(job => job.id === params.id);
 
   if (!job) {
@@ -31,12 +32,7 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="bg-white rounded-lg shadow-card p-8"
-            >
+            <div className="bg-white rounded-lg shadow-card p-8">
               <div className="flex items-start gap-6 mb-8">
                 <div className="w-20 h-20 relative flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden">
                   <Image
@@ -96,32 +92,20 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
                   ))}
                 </ul>
               </div>
-            </motion.div>
+            </div>
           </div>
           
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white rounded-lg shadow-card p-6 sticky top-24"
-            >
+            <div className="bg-white rounded-lg shadow-card p-6 sticky top-24">
               <h3 className="text-lg font-bold text-primary mb-4">Quick Apply</h3>
               <p className="text-gray-dark mb-6">
                 Ready to take the next step in your career? Apply now to join {job.company} as a {job.title}.
               </p>
               
-              <button
-                onClick={() => setIsApplying(true)}
-                className="w-full btn-primary mb-4"
-              >
-                Apply Now
-              </button>
-              
-              <button className="w-full btn-outline">
-                Save Job
-              </button>
+              <Suspense fallback={<div>Loading...</div>}>
+                <JobActions job={job} />
+              </Suspense>
               
               <div className="mt-6 pt-6 border-t border-gray-medium">
                 <h4 className="font-bold text-primary mb-3">Share this job</h4>
@@ -155,7 +139,7 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
                   </button>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

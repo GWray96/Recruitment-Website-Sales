@@ -4,7 +4,7 @@
   "description": "A recruitment website for sales positions",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm clean-install && next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -38,6 +38,8 @@
     "@types/node": "^22.14.0",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.2",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^15.3.0",
     "typescript": "^5.8.3"
   }
 }
