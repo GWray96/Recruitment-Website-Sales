@@ -5,11 +5,7 @@ import { BsGeoAlt, BsBriefcase, BsCurrencyDollar, BsClock, BsCheck2 } from 'reac
 import { jobsData } from '../../../mock/jobs';
 import JobActions from './JobActions';
 
-type PageProps = {
-  params: { id: string };
-};
-
-export default function JobDetailPage({ params }: PageProps) {
+export default function Page({ params }: { params: { id: string } }) {
   const job = jobsData.find(job => job.id === params.id);
 
   if (!job) {
