@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { jobsData } from '@/data/jobs';
+import { jobs } from '@/data/jobs';
 import JobDetails from '@/components/JobDetails';
 
 // Define the props type explicitly
@@ -10,7 +10,7 @@ type Props = {
 
 // Use the defined props type
 export default function Page({ params }: Props) {
-  const job = jobsData.find((job) => job.id === params.id);
+  const job = jobs.find((job) => job.id === params.id);
 
   if (!job) {
     notFound();
