@@ -2,8 +2,8 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import JobCard from '@/components/ui/JobCard';
-import { jobsData } from '@/mock/jobs';
+import JobCard from '../../../components/ui/JobCard';
+import { jobsData } from '../../../mock/jobs';
 
 export default function FeaturedJobs() {
   const featuredJobs = jobsData.filter(job => job.featured).slice(0, 3);
