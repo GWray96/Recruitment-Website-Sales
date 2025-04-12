@@ -3,6 +3,11 @@ import { jobs } from '@/data/jobs';
 import JobDetails from '@/components/JobDetails';
 import { Metadata } from 'next';
 
+type Props = {
+  params: { id: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
 // Generate static params for all job IDs
 export async function generateStaticParams() {
   return jobs.map((job) => ({
@@ -11,7 +16,7 @@ export async function generateStaticParams() {
 }
 
 // Generate metadata for the page
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const job = jobs.find((job) => job.id === params.id);
   
   if (!job) {
@@ -27,11 +32,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 }
 
 // Page component with correct type definition
-export default async function Page({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default async function Page({ params, searchParams }: Props) {
   const job = jobs.find((job) => job.id === params.id);
 
   if (!job) {
