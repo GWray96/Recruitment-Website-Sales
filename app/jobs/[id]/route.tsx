@@ -31,8 +31,8 @@ function getJobById(id: string) {
   return jobs.find((job) => job.id === id);
 }
 
-// Page component with a different approach
-export default function Page(props: any) {
+// Route handler
+export default function Route(props: any) {
   // Extract the ID from the props
   const id = props.params?.id;
   
