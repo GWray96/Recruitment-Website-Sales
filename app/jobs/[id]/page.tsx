@@ -26,9 +26,22 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   };
 }
 
-// Page component with correct type definition
-export default async function Page({ params }: { params: { id: string } }) {
-  const job = jobs.find((job) => job.id === params.id);
+// Helper function to get job by ID
+function getJobById(id: string) {
+  return jobs.find((job) => job.id === id);
+}
+
+// Page component with a different approach
+export default function Page(props: any) {
+  // Extract the ID from the props
+  const id = props.params?.id;
+  
+  if (!id) {
+    notFound();
+  }
+  
+  // Get the job using our helper function
+  const job = getJobById(id);
 
   if (!job) {
     notFound();
